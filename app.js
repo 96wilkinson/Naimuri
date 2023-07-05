@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const getDict = require('./components/getDict.js')
 const reduceDictByNumber = require('./components/reduceDictByNumber.js')
 const reduceDictByLetters = require('./components/reduceDictByLetters.js')
+const matchWords = require('./components/matchWords.js')
 
 app.get('/', async (req, res) => {
     try {
@@ -24,7 +25,8 @@ app.post('/', async (req, res) => {
         fullArray = await getDict(payload[0])
         reducedArrayByNumber = reduceDictByNumber(payload[0], await fullArray)
         reducedDictByLetters = reduceDictByLetters(payload[1], await reducedArrayByNumber)
-        res.send(await reducedDictByLetters)
+        matchedwords = matchWords(await reducedDictByLetters)
+        res.send(await matchedwords)
     } catch (error) {
         res.send(error)
     }
