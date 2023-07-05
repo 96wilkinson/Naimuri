@@ -1,0 +1,24 @@
+{
+  "name": "naimuri",
+  "version": "1.0.0",
+  "description": "Naimuri challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/96wilkinson/Naimuri.git"
+  },
+  "author": "Anthony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/96wilkinson/Naimuri/issues"
+  },
+  "homepage": "https://github.com/96wilkinson/Naimuri#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2"
+  }
+}
