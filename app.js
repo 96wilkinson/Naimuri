@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', async (req, res) => {
+const getDict = require('./components/getDict.js')
 
-    res.send("Hey")
+app.get('/', async (req, res) => {
+    response = await getDict()
+    res.send(await response)
 })
 
 app.listen(port, () => {
