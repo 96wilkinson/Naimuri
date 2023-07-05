@@ -10,16 +10,25 @@ const reduceDictByNumber = require('./components/reduceDictByNumber.js')
 const reduceDictByLetters = require('./components/reduceDictByLetters.js')
 
 app.get('/', async (req, res) => {
-    response = await getDict()
-    res.send(await response)
+    try {
+        response = await getDict()
+        res.send(await response)
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 app.post('/', async (req, res) => {
-    let payload = (req.body.body.split(" "))
-    fullArray = await getDict(payload[0])
-    reducedArrayByNumber = reduceDictByNumber(payload[0],await fullArray)
-    reducedDictByLetters = reduceDictByLetters(payload[1],await reducedArrayByNumber)
-    res.send(await reducedDictByLetters)
+    try {
+        let payload = (req.body.body.split(" "))
+        fullArray = await getDict(payload[0])
+        reducedArrayByNumber = reduceDictByNumber(payload[0], await fullArray)
+        reducedDictByLetters = reduceDictByLetters(payload[1], await reducedArrayByNumber)
+        res.send(await reducedDictByLetters)
+    } catch (error) {
+        res.send(error)
+    }
+
 });
 
 app.listen(port, () => {

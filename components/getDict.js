@@ -1,5 +1,5 @@
 const axios = require('axios');
-module.exports = async function getDict(Input) {
+module.exports = async function getDict() {
     try {
         let config = {
             method: 'get',
