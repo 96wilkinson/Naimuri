@@ -6,14 +6,11 @@ module.exports = async function reduceDictByUniqueLetters(arrayOfUniqueLetters, 
         for (let i = 0; i < remainingWordsArray.length; i++) {
             tempValForWord = remainingWordsArray[i].split('')
             for (let j = 0; j < tempValForWord.length; j++) {
-                switch (tempValForWord[j]) {
-                    case tempValForWord[j].includes(arrayOfUniqueLetters):
-                        arrayOfWordsContainingUniqueLetters.push(remainingWordsArray[i])
-                        break;
 
-                    default:
-                        break;
-                }
+                //console.log(tempValForWord[j],arrayOfUniqueLetters)
+                if (arrayOfUniqueLetters.includes(tempValForWord[j])) {
+                    arrayOfWordsContainingUniqueLetters.push(remainingWordsArray[i])
+                } else {continue}
             }
         }
         return await arrayOfWordsContainingUniqueLetters
