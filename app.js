@@ -31,8 +31,7 @@ app.post('/', async (req, res) => {
         fullArray = await getDict(payload[0])
         reducedArrayByNumber = reduceDictByNumber(payload[0], await fullArray)
         reducedDictByLettersNotInPayload = await reduceDictByLettersNotInPayload(payload[1], await reducedArrayByNumber)
-        reducedDictByUniqueLetters = await reduceDictByUniqueLetters(await countedNumberOfLetters, await reducedDictByLettersNotInPayload)
-        res.send(await reducedDictByUniqueLetters)
+        res.send(await reducedDictByLettersNotInPayload)
     } catch (error) {
         res.send(error)
     }
