@@ -1,5 +1,5 @@
 
-function arrayCreator(lengthOfWord) {
+module.exports = function arrayCreator(lengthOfWord) {
     let objectVar = {}
     switch (lengthOfWord) {
         case 4:
