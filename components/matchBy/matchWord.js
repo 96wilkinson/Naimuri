@@ -1,3 +1,0 @@
-function matchWord(numberOfLetters, arrayOfWords) {
-    
-}

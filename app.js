@@ -10,7 +10,7 @@ const getDict = require('./components/getDict.js')
 const reduceDictByNumber = require('./components/reduceBy/reduceDictByNumber.js')
 const reduceDictByLettersNotInPayload = require('./components/reduceBy/reduceDictByLettersNotInPayload.js')
 const countNumberOfLetters = require('./components/countLettersInPayLoad.js')
-const reduceDictByUniqueLetters = require('./components/reduceBy/reduceDictByUniqueLetters.js')
+const matchOrchestrator = require('./components/matchBy/matchOrchestrator.js')
 
 app.get('/', async (req, res) => {
     try {
@@ -31,7 +31,8 @@ app.post('/', async (req, res) => {
         fullArray = await getDict(payload[0])
         reducedArrayByNumber = reduceDictByNumber(payload[0], await fullArray)
         reducedDictByLettersNotInPayload = await reduceDictByLettersNotInPayload(payload[1], await reducedArrayByNumber)
-        res.send(await reducedDictByLettersNotInPayload)
+        matcherOrchestrator = await matchOrchestrator(await reducedDictByLettersNotInPayload, payload[0], payload[1])
+        res.send(await matcherOrchestrator)
     } catch (error) {
         res.send(error)
     }
