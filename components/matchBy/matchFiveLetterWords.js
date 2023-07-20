@@ -2,8 +2,7 @@
 const wordChecker = require('../checkWords/checkIfSameWord')
 const lettersChecker = require('../checkWords/checkLettersUsed')
 
-module.exports = async function matchFourLetterWords( wordArrays, arrays, lettersUsed) {
-    //let wordArrays = ["feast","earth","armor","stone","threw"]
+module.exports = async function matchFiveLetterWords( wordArrays, arrays, lettersUsed) {
     for (let i = 0; i < await wordArrays.length; i++) {
 
         let initialWord = await wordArrays[i].toString().split('')
