@@ -43,7 +43,13 @@ module.exports = async function matchOrchestrator(wordArrays, lengthOfWord, lett
                                         if (arrays[1][3] == arrays[4][0] && arrays[2][3] == arrays[4][1] && arrays[3][3] == arrays[4][2]) {
                                             let checked = lettersChecker(wordArrays[i], wordArrays[j], wordArrays[k], wordArrays[x], lettersUsed)
                                             if (checked == true) {
-                                                return await [arrays[1], arrays[2], arrays[3], arrays[4]]
+                                                let returnJson = {
+                                                    line1: arrays[1].toString().split(",").join(""),
+                                                    line2: arrays[2].toString().split(",").join(""),
+                                                    line3: arrays[3].toString().split(",").join(""),
+                                                    line4: arrays[4].toString().split(",").join("")
+                                                }
+                                                return await returnJson
                                             } else { continue }
                                         } else {
                                             continue

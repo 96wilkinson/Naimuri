@@ -28,7 +28,7 @@ app.post('/', async (req, res) => {
     try {
         let payload = (req.body.body.split(" "))
         countedNumberOfLetters = await countNumberOfLetters(payload[1])
-        fullArray = await getDict(payload[0])
+        fullArray = await getDict()
         reducedArrayByNumber = reduceDictByNumber(payload[0], await fullArray)
         reducedDictByLettersNotInPayload = await reduceDictByLettersNotInPayload(payload[1], await reducedArrayByNumber)
         matcherOrchestrator = await matchOrchestrator(await reducedDictByLettersNotInPayload, payload[0], payload[1])
@@ -40,5 +40,5 @@ app.post('/', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Word Square Application app listening on port ${port}`)
 })
