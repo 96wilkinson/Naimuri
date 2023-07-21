@@ -6,21 +6,13 @@ module.exports = async function matchSevenLetterWords(lettersUsed) {
     console.log("run seven letter words")
 
     let wordArrays = ["bravado",
-        "renamed" ,
-        "analogy" ,
-        "valuers" ,
-        "amoebas" ,
-        "degrade" ,
-        "odyssey" ]
-    let arrays = {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: [],
-        7: []
-    }
+        "renamed",
+        "analogy",
+        "valuers",
+        "amoebas",
+        "degrade",
+        "odyssey"]
+    let arrays = {}
     //1
     try {
         for (let i = 0; i < await wordArrays.length; i++) {
@@ -70,7 +62,7 @@ module.exports = async function matchSevenLetterWords(lettersUsed) {
 
                                                             //6
                                                             for (let z = 0; z < zArray.length; z++) {
-                                                                
+
                                                                 if (wordChecker(wordArrays[z], wordArrays[y]) == false) {
                                                                     testWordZ = wordArrays[z].toString().split('')
                                                                     arrays[6] = testWordZ
@@ -84,11 +76,11 @@ module.exports = async function matchSevenLetterWords(lettersUsed) {
                                                                             if (wordChecker(wordArrays[t], wordArrays[z]) == false) {
                                                                                 testWordT = wordArrays[t].toString().split('')
                                                                                 arrays[7] = testWordT
-                                                                                console.log("here")
-                                                                                //if (arrays[1][6] == arrays[7][0] && arrays[2][6] == arrays[7][1] && arrays[3][6] == arrays[7][2] && arrays[4][6] == arrays[7][3] && arrays[5][6] == arrays[7][5] && arrays[6][6] == arrays[7][6]) {
-                                                                                    let checked = lettersChecker(lettersUsed, wordArrays[i], wordArrays[j], wordArrays[k], wordArrays[x], wordArrays[y], wordArrays[z], wordArrays[t])
 
-                                                                                    if (checked == true) {
+                                                                                if (arrays[1][6] == arrays[7][0] && arrays[2][6] == arrays[7][1] && arrays[3][6] == arrays[7][2] && arrays[4][6] == arrays[7][3] && arrays[5][6] == arrays[7][4] && arrays[6][6] == arrays[7][5]) {
+                                                                                    let checked = await lettersChecker(lettersUsed, wordArrays[i], wordArrays[j], wordArrays[k], wordArrays[x], wordArrays[y], wordArrays[z], wordArrays[t])
+
+                                                                                    if (await checked == true) {
 
                                                                                         let returnJson = {
                                                                                             line1: arrays[1].toString().split(",").join(""),
@@ -101,7 +93,7 @@ module.exports = async function matchSevenLetterWords(lettersUsed) {
                                                                                         }
                                                                                         return await returnJson
                                                                                     } else { continue }
-                                                                               // } else { continue }
+                                                                                } else { continue }
                                                                             } else { continue } //6
                                                                         }
                                                                     } else { continue }
