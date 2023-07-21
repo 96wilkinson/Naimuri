@@ -2,8 +2,9 @@
 const wordChecker = require('../checkWords/checkIfSameWord')
 const lettersChecker = require('../checkWords/checkLettersUsed')
 
-module.exports = async function matchFourLetterWords(wordArrays, arrays, lettersUsed) {
-
+module.exports = async function matchFourLetterWords(wordArrays, lettersUsed) {
+    let arrays = {}
+    
     for (let i = 0; i < await wordArrays.length; i++) {
 
         let initialWord = await wordArrays[i].toString().split('')
@@ -24,6 +25,7 @@ module.exports = async function matchFourLetterWords(wordArrays, arrays, letters
                         if (wordChecker(wordArrays[j], wordArrays[k]) == false) {
                             testWordK = wordArrays[k].toString().split('')
                             arrays[3] = testWordK
+
                             if (arrays[1][2] == arrays[3][0] && arrays[2][2] == arrays[3][1]) {
                                 let xArray = await kArray
 
@@ -34,9 +36,9 @@ module.exports = async function matchFourLetterWords(wordArrays, arrays, letters
                                         arrays[4] = testWordX
 
                                         if (arrays[1][3] == arrays[4][0] && arrays[2][3] == arrays[4][1] && arrays[3][3] == arrays[4][2]) {
-                                            let checked = lettersChecker(lettersUsed,wordArrays[i], wordArrays[j], wordArrays[k], wordArrays[x])
-
-                                            if (checked == true) {
+                                            let checked = await lettersChecker(lettersUsed,wordArrays[i], wordArrays[j], wordArrays[k], wordArrays[x])
+                                            
+                                            if (await checked == true) {
                                                 
                                                 let returnJson = {
                                                     line1: arrays[1].toString().split(",").join(""),
